@@ -6,41 +6,32 @@ var increase = document.getElementById("increase");
 
 var decrease = document.getElementById("down");
 
-/* increase.addEventListener("click", () => {
-  number++;
-  text.textContent = number;
-  increase.classList.add("show");
-});
-
-decrease.addEventListener("click", () => {
-  number--;
-  text.textContent = number;
-  decrease.classList.add("show");
-});
-reset.addEventListener("click", () => {
-  number = 0;
-  text.textContent = number;
-  reset.classList.add("show");
-}); */
-
+text.textContent = number;
 counter.forEach((b) => {
   b.addEventListener("click", (e) => {
-    console.log("cool");
+    number > 0 ? (text.style.color = "green") : (text.style.color = "red");
     switch (e.target.id) {
       case "down":
         number--;
         text.textContent = number;
         decrease.classList.add("show");
+        increase.classList.remove("show");
+        reset.classList.remove("show");
         break;
       case "increase":
         number++;
         text.textContent = number;
         increase.classList.add("show");
+        decrease.classList.remove("show");
+        reset.classList.remove("show");
         break;
       case "reset":
         number = 0;
         text.textContent = number;
+        decrease.classList.remove("show");
+        increase.classList.remove("show");
         reset.classList.add("show");
+        text.style.color = "grey";
     }
   });
 });
